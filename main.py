@@ -1,4 +1,3 @@
-# main.py
 from crew import get_message_from_input
 from whatsapp_sender import send_whatsapp_message
 from speech_to_text import transcribe_voice
@@ -11,10 +10,11 @@ instance_id = os.getenv("INSTANCE_ID")
 token = os.getenv("TOKEN")
 
 if __name__ == "__main__":
-    print("Say the message")
-    user_input = transcribe_voice()
 
-    composed_message = get_message_from_input(user_input)
+    print("Say the message")
+    user_input = transcribe_voice()     # Transcribe user's speech to text
+
+    composed_message = get_message_from_input(user_input)       # Generate the composed WhatsApp message
 
     print("\nWhatsApp Message : ")
     print(composed_message) 

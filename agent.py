@@ -1,4 +1,3 @@
-# agent_gemini.py
 import os
 from dotenv import load_dotenv
 import nest_asyncio
@@ -8,12 +7,13 @@ from crewai import Agent
 nest_asyncio.apply()
 load_dotenv()
 
+# Gemini LLM
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",
                              verbose=True, 
                              temperature=0.5, # Randomness
                              google_api_key = os.getenv("GOOGLE_API_KEY"))
 
-# Speech Fine Tuner
+# Speech Fine Tuner - Fine Tune and fill the missing parts of the the speech text
 speech_finetune_agent = Agent(
     role="Speech Fine Tuner",
     goal="Refine the transcription into grammatically correct English",
@@ -21,7 +21,7 @@ speech_finetune_agent = Agent(
     llm=llm
 )
 
-# Message Agent
+# Message Agent - Call to the Ultramsg API and send the whatsapp message
 message_agent = Agent(
     role="Message Composer",
     goal="Generate a WhatsApp message based on user input",

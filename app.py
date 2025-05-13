@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from crew import get_message_from_input
 from whatsapp_sender import send_whatsapp_message

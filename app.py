@@ -17,7 +17,7 @@ st.set_page_config(page_title="🎙️ WhatsApp Voice Messenger", layout="center
 st.title("🎙️ WhatsApp Voice Message Generator")
 st.markdown("Speak your intent and generate a WhatsApp message using AI.")
 
-# Step 1: Capture voice
+# Capture voice
 if st.button("🎤 Start Voice Input"):
     with st.spinner("Listening... Speak now!"):
         user_input = transcribe_voice()
@@ -27,14 +27,14 @@ if st.button("🎤 Start Voice Input"):
     else:
         st.success(f"✅ Transcribed: `{user_input}`")
 
-        # Step 2: Generate WhatsApp message
+        # Generate WhatsApp message
         with st.spinner("🧠 Generating WhatsApp message..."):
             composed_message = get_message_from_input(user_input)
 
         st.markdown("### ✉️ Composed WhatsApp Message:")
         st.info(composed_message)
 
-        # Step 3: Send message
+        # Send message
         phone_number = st.text_input("📱 Enter phone number (with country code)", placeholder="+94712345678")
 
         if st.button("📤 Send WhatsApp Message"):

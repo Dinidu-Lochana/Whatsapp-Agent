@@ -11,23 +11,19 @@ instance_id = os.getenv("INSTANCE_ID")
 token = os.getenv("TOKEN")
 
 if __name__ == "__main__":
-    print("🧠 Waiting for voice input...")
+    print("Say the message")
     user_input = transcribe_voice()
-
-    if not user_input.strip():
-        print("❌ Could not understand speech. Try again.")
-        exit()
 
     composed_message = get_message_from_input(user_input)
 
-    print("\n📤 Composed WhatsApp Message:")
-    print(composed_message)
+    print("\nWhatsApp Message : ")
+    print(composed_message) 
 
-    phone = input("\n📱 Enter WhatsApp number (with country code, e.g., +94712345678): ")
+    phone_number = input("\nEnter WhatsApp number : ")
     
-    if not phone.startswith("+"):
-        print("❌ Invalid phone number format. Must include country code starting with '+'.")
+    if not phone_number.startswith("+"):
+        print("Invalid phone number.")
     else:
-        result = send_whatsapp_message(phone, composed_message, instance_id, token)
-        print("\n✅ Message Sent Result:")
+        result = send_whatsapp_message(phone_number, composed_message, instance_id, token)
+        print("\nMessage Sent Result : ")
         print(result)
